@@ -1,0 +1,10 @@
+node_modules
+.next
+.git
+.gitignore
+*.md
+designs
+PRD.md
+SPECS.md
+prompt_inicial.md
+.agent
