@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucas | Desenvolvedor de Software & Gerente de Projetos</title>
+  <meta name="description" content="Portfólio de Lucas — Desenvolvedor Backend Java com experiência em Spring Boot, Kafka, Docker e Gestão de Projetos. Atualmente contribuindo no TCM-BA." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Lucas | Desenvolvedor de Software" />
+  <meta property="og:description" content="Portfólio profissional com projetos e experiências em desenvolvimento backend e gestão de projetos." />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lucas | Desenvolvedor de Software" />
+
+  <!-- Google Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#3B82F6",
+            "background-light": "#F3F4F6",
+            "background-dark": "#111111",
+            "surface-light": "#FFFFFF",
+            "surface-dark": "#1A1A1A",
+            "text-main-light": "#1F2937",
+            "text-main-dark": "#E5E5E5",
+            "text-muted-light": "#6B7280",
+            "text-muted-dark": "#A1A1AA",
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"],
+          },
+          boxShadow: {
+            glow: "0 0 15px -3px rgba(59, 130, 246, 0.3)",
+          },
+          animation: {
+            "fade-in-up": "fadeInUp 0.6s ease-out both",
+            blink: "blink 1s step-end infinite",
+          },
+          keyframes: {
+            fadeInUp: {
+              "0%":   { opacity: "0", transform: "translateY(20px)" },
+              "100%": { opacity: "1", transform: "translateY(0)" },
+            },
+            blink: {
+              "0%, 100%": { opacity: "1" },
+              "50%":      { opacity: "0" },
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* ===== Global Styles ===== */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3B82F6;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2563EB;
+    }
+
+    /* Reveal animation — hidden by default */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered delay utilities */
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+
+    /* Cursor blink */
+    .cursor-blink {
+      display: inline-block;
+      width: 3px;
+      height: 1em;
+      background: #3B82F6;
+      margin-left: 4px;
+      vertical-align: text-bottom;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Mobile menu transition */
+    #mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+      opacity: 0;
+    }
+    #mobile-menu.open {
+      max-height: 300px;
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-text-main-light dark:text-text-main-dark font-sans antialiased transition-colors duration-300">
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="fixed w-full z-50 top-0 start-0 border-b border-gray-200 dark:border-gray-800 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md">
+    <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between px-4 py-3 md:py-4">
+
+      <!-- Logo -->
+      <a href="#" class="text-2xl font-bold font-mono tracking-tight text-primary hover:opacity-80 transition-opacity" aria-label="Ir para o topo">
+        &lt;/&gt;
+      </a>
+
+      <!-- Desktop Nav Links (center) -->
+      <div class="hidden md:flex items-center space-x-8 order-1">
+        <a href="#about" class="text-sm font-medium text-text-main-light dark:text-text-main-dark hover:text-primary transition-colors">Sobre</a>
+        <a href="#projects" class="text-sm font-medium text-text-main-light dark:text-text-main-dark hover:text-primary transition-colors">Projetos</a>
+        <a href="#contact" class="text-sm font-medium text-text-main-light dark:text-text-main-dark hover:text-primary transition-colors">Contato</a>
+      </div>
+
+      <!-- Right controls -->
+      <div class="flex items-center space-x-4 md:order-2">
+        <!-- Language toggle (visual only) -->
+        <button class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors" type="button" aria-label="Alternar idioma">
+          <span class="font-bold text-primary">PT</span>
+          <span class="mx-0.5 opacity-50">|</span>
+          <span>EN</span>
+        </button>
+
+        <!-- Dark/Light mode toggle -->
+        <button id="theme-toggle" type="button" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50" aria-label="Alternar modo escuro/claro">
+          <span class="material-icons-outlined text-xl hidden dark:block">light_mode</span>
+          <span class="material-icons-outlined text-xl block dark:hidden">dark_mode</span>
+        </button>
+
+        <!-- Hamburger (mobile) -->
+        <button id="menu-toggle" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600 transition-colors" aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu principal">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 17 14" aria-hidden="true">
+            <path d="M1 1h15M1 7h15M1 13h15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="w-full md:hidden">
+        <ul class="flex flex-col space-y-1 pt-4 pb-2">
+          <li><a href="#about" class="block py-2 px-3 rounded text-text-main-light dark:text-text-main-dark hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Sobre</a></li>
+          <li><a href="#projects" class="block py-2 px-3 rounded text-text-main-light dark:text-text-main-dark hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projetos</a></li>
+          <li><a href="#contact" class="block py-2 px-3 rounded text-text-main-light dark:text-text-main-dark hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN ===== -->
+  <main class="max-w-5xl mx-auto px-6">
+
+    <!-- ===== HERO SECTION ===== -->
+    <section id="hero" class="min-h-[80vh] flex flex-col justify-center items-center text-center pt-32 pb-16 space-y-6">
+      <!-- Avatar with gradient border -->
+      <div class="animate-fade-in-up delay-100">
+        <div class="inline-block p-1 rounded-full bg-gradient-to-tr from-primary to-purple-500">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOFkXswtbFqd6pyi14cQAbym7hffU1E5xGq0i5n5ofWz-bEt8AFFj7wIg9rxKu6QNbsIkc3FFA7-frlJa2o3t-PXuTuCmBFKT-v6M89tQzFRCuqq61f6Fq62G5Dt87Zlc7LLQfIEVGwACKkhFXpaLyQdfVSJCwqk_0czdeMQZW6rXYXTG26FmBtQld5NLQmtxTJlgkihAiasunTuTnPEQCaRw5Uue-m4usJ_3q4BBmNoMF6wLJCXTfj58eXKkZUxwSyDD6toRp2Q"
+            alt="Lucas — Desenvolvedor de Software"
+            class="rounded-full w-28 h-28 border-4 border-background-light dark:border-background-dark object-cover"
+            loading="eager"
+          />
+        </div>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-5xl md:text-7xl font-bold tracking-tight animate-fade-in-up delay-200">
+        Olá, eu sou <span class="text-primary">Lucas</span><span class="cursor-blink"></span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-xl md:text-2xl text-text-muted-light dark:text-text-muted-dark font-light max-w-2xl animate-fade-in-up delay-300">
+        Desenvolvedor de Software &amp; Gerente de Projetos
+      </p>
+
+      <!-- Description -->
+      <p class="text-base text-text-muted-light dark:text-text-muted-dark max-w-lg leading-relaxed animate-fade-in-up delay-400">
+        Especialista em construir soluções robustas e escaláveis.<br>
+        Atualmente contribuindo para a modernização tecnológica no TCM-BA.
+      </p>
+
+      <!-- CTAs -->
+      <div class="pt-4 flex flex-col sm:flex-row gap-4 animate-fade-in-up delay-500">
+        <a href="#contact" class="px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/30 text-center">
+          Entrar em contato
+        </a>
+        <a href="#projects" class="px-6 py-3 border border-gray-300 dark:border-gray-700 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-all text-center">
+          Ver portfólio
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section id="about" class="mb-32 scroll-mt-24">
+      <h2 class="text-3xl font-bold mb-12 flex items-center reveal">
+        <span class="text-primary mr-3 text-2xl font-mono">01.</span> Sobre Mim
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <!-- Left column: Text + Tech badges -->
+        <div class="space-y-6 reveal">
+          <p class="text-text-muted-light dark:text-text-muted-dark leading-relaxed">
+            Meu foco principal é o desenvolvimento backend, onde me sinto confortável arquitetando sistemas complexos e garantindo performance e segurança. Tenho vasta experiência com o ecossistema Java e bancos de dados relacionais.
+          </p>
+          <p class="text-text-muted-light dark:text-text-muted-dark leading-relaxed">
+            Além de escrever código, atuo como Gerente de Projetos, unindo a visão técnica com as necessidades de negócio para entregar valor real aos usuários.
+          </p>
+
+          <!-- Tech badges -->
+          <div class="pt-4">
+            <h3 class="text-xs uppercase tracking-wider text-text-muted-light dark:text-text-muted-dark mb-4 font-semibold">Tecnologias Recentes</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 text-xs font-mono rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors cursor-default">Java</span>
+              <span class="px-3 py-1 text-xs font-mono rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors cursor-default">Spring Boot</span>
+              <span class="px-3 py-1 text-xs font-mono rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors cursor-default">SQL Server</span>
+              <span class="px-3 py-1 text-xs font-mono rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors cursor-default">Kafka</span>
+              <span class="px-3 py-1 text-xs font-mono rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors cursor-default">Redis</span>
+              <span class="px-3 py-1 text-xs font-mono rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors cursor-default">Docker</span>
+              <span class="px-3 py-1 text-xs font-mono rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors cursor-default">REST APIs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right column: Code editor card -->
+        <div class="relative group reveal">
+          <!-- Glow effect behind card -->
+          <div class="absolute -inset-1 bg-gradient-to-r from-primary to-purple-600 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-700 group-hover:duration-200"></div>
+
+          <div class="relative bg-gray-900 rounded-xl p-6 shadow-xl border border-gray-700 font-mono text-sm leading-relaxed overflow-hidden">
+            <!-- Window dots -->
+            <div class="flex space-x-2 mb-4">
+              <div class="w-3 h-3 rounded-full bg-red-500"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            </div>
+
+            <!-- Java code with manual syntax highlighting -->
+            <div class="text-gray-300">
+              <p><span class="text-purple-400">class</span> <span class="text-yellow-400">Developer</span> {</p>
+              <p class="pl-4"><span class="text-purple-400">private</span> <span class="text-blue-400">String</span> name = <span class="text-green-400">"Lucas"</span>;</p>
+              <p class="pl-4"><span class="text-purple-400">private</span> <span class="text-blue-400">String</span> role = <span class="text-green-400">"Backend &amp; PM"</span>;</p>
+              <p class="pl-4">&nbsp;</p>
+              <p class="pl-4"><span class="text-purple-400">public</span> <span class="text-blue-400">void</span> <span class="text-sky-300">createImpact</span>() {</p>
+              <p class="pl-8"><span class="text-gray-500">// Writing clean code...</span></p>
+              <p class="pl-8"><span class="text-purple-400">while</span>(alive) {</p>
+              <p class="pl-12">buildSolutions();</p>
+              <p class="pl-12">drinkCoffee();</p>
+              <p class="pl-8">}</p>
+              <p class="pl-4">}</p>
+              <p>}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS SECTION ===== -->
+    <section id="projects" class="mb-32 scroll-mt-24">
+      <h2 class="text-3xl font-bold mb-12 flex items-center reveal">
+        <span class="text-primary mr-3 text-2xl font-mono">02.</span> Projetos
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- Project 1: Como Fazer Café -->
+        <div class="group relative bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:shadow-glow hover:border-primary/50 transition-all duration-300 flex flex-col reveal">
+          <div class="flex justify-between items-start mb-4">
+            <span class="material-icons-outlined text-4xl text-primary group-hover:scale-110 transition-transform duration-300">coffee_maker</span>
+            <div class="flex space-x-3">
+              <a href="#" target="_blank" rel="noopener noreferrer" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors" aria-label="Ver projeto ao vivo">
+                <span class="material-icons text-xl">open_in_new</span>
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors" aria-label="Ver código no GitHub">
+                <span class="material-icons-outlined text-xl">code</span>
+              </a>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Como Fazer Café</h3>
+          <p class="text-text-muted-light dark:text-text-muted-dark text-sm mb-6 leading-relaxed flex-grow">
+            Guia interativo que calcula proporção perfeita de água e café para diferentes métodos de preparo.
+          </p>
+          <div class="flex flex-wrap gap-3 mt-auto">
+            <span class="text-xs font-mono text-text-muted-light dark:text-text-muted-dark">JS</span>
+            <span class="text-xs font-mono text-text-muted-light dark:text-text-muted-dark">React</span>
+            <span class="text-xs font-mono text-text-muted-light dark:text-text-muted-dark">Tailwind</span>
+          </div>
+        </div>
+
+        <!-- Project 2: Log Analyzer -->
+        <div class="group relative bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:shadow-glow hover:border-primary/50 transition-all duration-300 flex flex-col reveal">
+          <div class="flex justify-between items-start mb-4">
+            <span class="material-icons-outlined text-4xl text-primary group-hover:scale-110 transition-transform duration-300">bar_chart</span>
+            <div class="flex space-x-3">
+              <a href="#" target="_blank" rel="noopener noreferrer" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors" aria-label="Ver código no GitHub">
+                <span class="material-icons-outlined text-xl">code</span>
+              </a>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Log Analyzer</h3>
+          <p class="text-text-muted-light dark:text-text-muted-dark text-sm mb-6 leading-relaxed flex-grow">
+            Ferramenta CLI para processamento e análise de logs de servidores em tempo real, detectando anomalias.
+          </p>
+          <div class="flex flex-wrap gap-3 mt-auto">
+            <span class="text-xs font-mono text-text-muted-light dark:text-text-muted-dark">Python</span>
+            <span class="text-xs font-mono text-text-muted-light dark:text-text-muted-dark">Pandas</span>
+            <span class="text-xs font-mono text-text-muted-light dark:text-text-muted-dark">Bash</span>
+          </div>
+        </div>
+
+        <!-- Project 3: API Gateway Microservice -->
+        <div class="group relative bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:shadow-glow hover:border-primary/50 transition-all duration-300 flex flex-col reveal">
+          <div class="flex justify-between items-start mb-4">
+            <span class="material-icons-outlined text-4xl text-primary group-hover:scale-110 transition-transform duration-300">dns</span>
+            <div class="flex space-x-3">
+              <a href="#" target="_blank" rel="noopener noreferrer" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors" aria-label="Ver projeto ao vivo">
+                <span class="material-icons text-xl">open_in_new</span>
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors" aria-label="Ver código no GitHub">
+                <span class="material-icons-outlined text-xl">code</span>
+              </a>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">API Gateway Microservice</h3>
+          <p class="text-text-muted-light dark:text-text-muted-dark text-sm mb-6 leading-relaxed flex-grow">
+            Implementação de API Gateway com Spring Cloud Gateway para orquestrar requisições em arquitetura de microserviços.
+          </p>
+          <div class="flex flex-wrap gap-3 mt-auto">
+            <span class="text-xs font-mono text-text-muted-light dark:text-text-muted-dark">Spring Cloud</span>
+            <span class="text-xs font-mono text-text-muted-light dark:text-text-muted-dark">Java 17</span>
+            <span class="text-xs font-mono text-text-muted-light dark:text-text-muted-dark">Docker</span>
+          </div>
+        </div>
+
+        <!-- Project 4: Task Scheduler -->
+        <div class="group relative bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:shadow-glow hover:border-primary/50 transition-all duration-300 flex flex-col reveal">
+          <div class="flex justify-between items-start mb-4">
+            <span class="material-icons-outlined text-4xl text-primary group-hover:scale-110 transition-transform duration-300">schedule</span>
+            <div class="flex space-x-3">
+              <a href="#" target="_blank" rel="noopener noreferrer" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors" aria-label="Ver código no GitHub">
+                <span class="material-icons-outlined text-xl">code</span>
+              </a>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Task Scheduler</h3>
+          <p class="text-text-muted-light dark:text-text-muted-dark text-sm mb-6 leading-relaxed flex-grow">
+            Sistema de agendamento de tarefas distribuídas com Quartz Scheduler e Kafka para alta disponibilidade.
+          </p>
+          <div class="flex flex-wrap gap-3 mt-auto">
+            <span class="text-xs font-mono text-text-muted-light dark:text-text-muted-dark">Java</span>
+            <span class="text-xs font-mono text-text-muted-light dark:text-text-muted-dark">Quartz</span>
+            <span class="text-xs font-mono text-text-muted-light dark:text-text-muted-dark">Kafka</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section id="contact" class="max-w-3xl mx-auto text-center mb-32 scroll-mt-24">
+      <p class="text-sm font-mono text-primary mb-4 reveal">03. O que vem agora?</p>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 reveal">Vamos nos conectar</h2>
+      <p class="text-text-muted-light dark:text-text-muted-dark mb-10 text-lg leading-relaxed reveal">
+        Estou sempre aberto a novas oportunidades e desafios interessantes no mundo do desenvolvimento. Se você tem uma pergunta ou apenas quer dar um oi, minha caixa de entrada está sempre aberta!
+      </p>
+      <a id="email-link" href="#" class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-primary hover:bg-primary/10 rounded-lg text-lg font-mono transition-all reveal" aria-label="Enviar email">
+        Diga Olá
+      </a>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="max-w-5xl mx-auto px-6 border-t border-gray-200 dark:border-gray-800 pt-8 pb-8">
+    <div class="flex flex-col items-center">
+      <!-- Social icons -->
+      <div class="flex space-x-8 mb-6">
+        <!-- GitHub -->
+        <a href="#" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-all transform hover:-translate-y-1 duration-300" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+        </a>
+        <!-- LinkedIn -->
+        <a href="#" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-all transform hover:-translate-y-1 duration-300" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        </a>
+        <!-- Email -->
+        <a id="footer-email-link" href="#" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-all transform hover:-translate-y-1 duration-300" aria-label="Email">
+          <span class="material-icons-outlined text-2xl">email</span>
+        </a>
+      </div>
+
+      <!-- Copyright -->
+      <p class="text-sm font-mono text-text-muted-light dark:text-text-muted-dark opacity-60">
+        Desenvolvido por Lucas · 2025
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // =====================================================
+    // 1. Dark Mode Toggle
+    // =====================================================
+    (function initDarkMode() {
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const prefersDark =
+        localStorage.getItem('color-theme') === 'dark' ||
+        (!localStorage.getItem('color-theme') &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+      document.documentElement.classList.toggle('dark', prefersDark);
+
+      themeToggleBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+      });
+    })();
+
+    // =====================================================
+    // 2. Mobile Menu Toggle
+    // =====================================================
+    (function initMobileMenu() {
+      const toggleBtn = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      toggleBtn.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('open');
+        toggleBtn.setAttribute('aria-expanded', isOpen);
+      });
+
+      // Close menu on anchor link click
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+
+    // =====================================================
+    // 3. Intersection Observer — Reveal Animations
+    // =====================================================
+    (function initRevealAnimations() {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('active');
+              observer.unobserve(entry.target); // animate only once
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    })();
+
+    // =====================================================
+    // 4. Email Obfuscation
+    // =====================================================
+    (function initEmailObfuscation() {
+      const user = 'lucas';
+      const domain = 'exemplo.com';
+      const fullEmail = user + '@' + domain;
+
+      const emailLink = document.getElementById('email-link');
+      if (emailLink) {
+        emailLink.href = 'mailto:' + fullEmail;
+      }
+
+      const footerEmailLink = document.getElementById('footer-email-link');
+      if (footerEmailLink) {
+        footerEmailLink.href = 'mailto:' + fullEmail;
+      }
+    })();
+  </script>
+
+</body>
+</html>
