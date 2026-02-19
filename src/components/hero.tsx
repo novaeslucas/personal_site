@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/hooks/language-context";
 import { Button } from "@/components/ui/button";
 
 const containerVariants = {
@@ -25,6 +26,8 @@ const childVariants = {
 };
 
 export function Hero() {
+  const { t } = useLanguage();
+
   return (
     <motion.section
       id="hero"
@@ -38,7 +41,7 @@ export function Hero() {
         <div className="inline-block p-1 rounded-full bg-gradient-to-tr from-primary to-purple-500">
           <Image
             src="/profile_image.png"
-            alt="Lucas — Desenvolvedor de Software"
+            alt={t.hero.avatarAlt}
             width={256}
             height={256}
             priority
@@ -52,7 +55,7 @@ export function Hero() {
         variants={childVariants}
         className="text-5xl md:text-7xl font-bold tracking-tight"
       >
-        Olá, eu sou <span className="text-primary">Lucas</span>
+        {t.hero.greeting} <span className="text-primary">Lucas</span>
         <span className="cursor-blink" />
       </motion.h1>
 
@@ -61,7 +64,7 @@ export function Hero() {
         variants={childVariants}
         className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl"
       >
-        Desenvolvedor de Software
+        {t.hero.subtitle}
       </motion.p>
 
       {/* Description */}
@@ -69,18 +72,18 @@ export function Hero() {
         variants={childVariants}
         className="text-base text-muted-foreground max-w-lg leading-relaxed"
       >
-        Especialista em construir soluções robustas e escaláveis.
+        {t.hero.description1}
         <br />
-        Atualmente contribuindo para a modernização tecnológica no TCM-BA.
+        {t.hero.description2}
       </motion.p>
 
       {/* CTAs */}
       <motion.div variants={childVariants} className="pt-4 flex flex-col sm:flex-row gap-4">
         <Button asChild size="lg" className="shadow-lg shadow-primary/30">
-          <a href="#contact">Entrar em contato</a>
+          <a href="#contact">{t.hero.cta}</a>
         </Button>
         <Button asChild variant="outline" size="lg">
-          <a href="#projects">Ver portfólio</a>
+          <a href="#projects">{t.hero.portfolio}</a>
         </Button>
       </motion.div>
     </motion.section>

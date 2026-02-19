@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { useLanguage } from "@/hooks/language-context";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -10,14 +11,9 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 
-const navLinks = [
-  { label: "Sobre", href: "#about" },
-  { label: "Projetos", href: "#projects" },
-  { label: "Contato", href: "#contact" },
-];
-
 export function Navbar() {
   const { setTheme, resolvedTheme } = useTheme();
+  const { locale, setLocale, t } = useLanguage();
   const [sheetOpen, setSheetOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -27,6 +23,12 @@ export function Navbar() {
 
   const toggleTheme = () => setTheme(isDark ? "light" : "dark");
 
+  const navLinks = [
+    { label: t.nav.about, href: "#about" },
+    { label: t.nav.projects, href: "#projects" },
+    { label: t.nav.contact, href: "#contact" },
+  ];
+
   return (
     <nav className="fixed w-full z-50 top-0 start-0 border-b border-border bg-background/90 backdrop-blur-md">
       <div className="max-w-5xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
@@ -34,7 +36,7 @@ export function Navbar() {
         <a
           href="#"
           className="text-2xl font-bold font-mono tracking-tight text-primary hover:opacity-80 transition-opacity"
-          aria-label="Ir para o topo"
+          aria-label={t.nav.goToTop}
         >
           &lt;/&gt;
         </a>
@@ -54,14 +56,15 @@ export function Navbar() {
 
         {/* Right-side controls */}
         <div className="flex items-center space-x-3 md:space-x-4">
-          {/* Language toggle (visual only) */}
+          {/* Language toggle */}
           <button
             className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-            aria-label="Alternar idioma"
+            aria-label={t.nav.toggleLang}
+            onClick={() => setLocale(locale === "pt" ? "en" : "pt")}
           >
-            <span className="font-bold text-primary">PT</span>
+            <span className={locale === "pt" ? "font-bold text-primary" : ""}>PT</span>
             <span className="mx-0.5 opacity-50">|</span>
-            <span>EN</span>
+            <span className={locale === "en" ? "font-bold text-primary" : ""}>EN</span>
           </button>
 
           {/* Dark/Light mode toggle */}
@@ -69,7 +72,7 @@ export function Navbar() {
             variant="ghost"
             size="icon"
             onClick={toggleTheme}
-            aria-label="Alternar modo escuro/claro"
+            aria-label={t.nav.toggleTheme}
             className="rounded-full"
           >
             <span className="material-symbols-outlined text-xl">
@@ -84,7 +87,7 @@ export function Navbar() {
                 variant="ghost"
                 size="icon"
                 className="md:hidden"
-                aria-label="Abrir menu principal"
+                aria-label={t.nav.openMenu}
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 17 14" aria-hidden="true">
                   <path

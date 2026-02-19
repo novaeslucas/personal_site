@@ -2,28 +2,28 @@
 
 import { Button } from "@/components/ui/button";
 import { SectionReveal, RevealDiv } from "@/components/section-reveal";
+import { useLanguage } from "@/hooks/language-context";
 import { useEmail } from "@/hooks/use-email";
 
 export function Contact() {
   const { href } = useEmail();
+  const { t } = useLanguage();
 
   return (
     <SectionReveal id="contact" className="mb-32 scroll-mt-24">
       {/* Section heading — same pattern as 01. and 02. */}
       <h2 className="text-3xl font-bold mb-12 flex items-center">
-        <span className="text-primary mr-3 text-2xl font-mono">03.</span> Contato
+        <span className="text-primary mr-3 text-2xl font-mono">03.</span> {t.contact.heading}
       </h2>
 
       <div className="grid md:grid-cols-2 gap-12 items-center">
         {/* Left column: Text + CTA */}
         <RevealDiv className="space-y-6" delay={0.1}>
           <p className="text-2xl md:text-3xl font-semibold">
-            Vamos nos conectar
+            {t.contact.title}
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            Estou sempre aberto a novas oportunidades e desafios interessantes no
-            mundo do desenvolvimento. Se você tem uma pergunta ou apenas quer dar
-            um oi, minha caixa de entrada está sempre aberta!
+            {t.contact.paragraph}
           </p>
           <div className="pt-2">
             <Button
@@ -32,8 +32,8 @@ export function Contact() {
               size="lg"
               className="px-8 py-4 border-2 border-primary text-primary hover:bg-primary/10 text-lg font-mono"
             >
-              <a href={href} aria-label="Enviar email">
-                Diga Olá
+              <a href={href} aria-label={t.contact.ctaLabel}>
+                {t.contact.cta}
               </a>
             </Button>
           </div>

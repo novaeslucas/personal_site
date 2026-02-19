@@ -3,9 +3,14 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionReveal } from "@/components/section-reveal";
-import { projects, type Project } from "@/lib/data";
+import { useLanguage } from "@/hooks/language-context";
+import { projects } from "@/lib/data";
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectCard({ projectIndex, index }: { projectIndex: number; index: number }) {
+  const { t } = useLanguage();
+  const project = projects[projectIndex];
+  const translatedItem = t.projects.items[projectIndex];
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -32,7 +37,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
-                  aria-label={`Ver ${project.title} ao vivo`}
+                  aria-label={`${t.projects.viewLive} - ${translatedItem.title}`}
                 >
                   <span className="material-symbols-outlined text-xl">open_in_new</span>
                 </a>
@@ -43,7 +48,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
-                  aria-label={`Ver código de ${project.title} no GitHub`}
+                  aria-label={`${t.projects.viewCode} - ${translatedItem.title}`}
                 >
                   <span className="material-symbols-outlined text-xl">code</span>
                 </a>
@@ -53,12 +58,12 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
           {/* Title */}
           <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-            {project.title}
+            {translatedItem.title}
           </h3>
 
           {/* Description */}
           <p className="text-muted-foreground text-sm mb-6 leading-relaxed flex-grow">
-            {project.description}
+            {translatedItem.description}
           </p>
 
           {/* Tech stack */}
@@ -79,15 +84,17 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 }
 
 export function Projects() {
+  const { t } = useLanguage();
+
   return (
     <SectionReveal id="projects" className="mb-32 scroll-mt-24">
       <h2 className="text-3xl font-bold mb-12 flex items-center">
-        <span className="text-primary mr-3 text-2xl font-mono">02.</span> Projetos
+        <span className="text-primary mr-3 text-2xl font-mono">02.</span> {t.projects.heading}
       </h2>
 
       <div className="grid md:grid-cols-2 gap-6">
-        {projects.map((project, index) => (
-          <ProjectCard key={project.title} project={project} index={index} />
+        {projects.map((_, index) => (
+          <ProjectCard key={index} projectIndex={index} index={index} />
         ))}
       </div>
     </SectionReveal>

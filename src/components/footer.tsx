@@ -1,6 +1,7 @@
 "use client";
 
 import { useEmail } from "@/hooks/use-email";
+import { useLanguage } from "@/hooks/language-context";
 
 function GitHubIcon() {
   return (
@@ -28,6 +29,7 @@ function LinkedInIcon() {
 
 export function Footer() {
   const { href } = useEmail();
+  const { t } = useLanguage();
 
   return (
     <footer className="max-w-5xl mx-auto px-6 border-t border-border pt-8 pb-8">
@@ -63,7 +65,7 @@ export function Footer() {
 
         {/* Copyright */}
         <p className="text-sm font-mono text-muted-foreground opacity-60">
-          Desenvolvido por Lucas · 2026
+          {t.footer.builtBy}
         </p>
       </div>
     </footer>

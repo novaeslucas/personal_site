@@ -2,33 +2,33 @@
 
 import { Badge } from "@/components/ui/badge";
 import { SectionReveal, RevealDiv } from "@/components/section-reveal";
+import { useLanguage } from "@/hooks/language-context";
 import { techBadges } from "@/lib/data";
 
 export function About() {
+  const { t } = useLanguage();
+
   return (
     <SectionReveal id="about" className="mb-32 scroll-mt-24">
       {/* Section heading */}
       <h2 className="text-3xl font-bold mb-12 flex items-center">
-        <span className="text-primary mr-3 text-2xl font-mono">01.</span> Sobre Mim
+        <span className="text-primary mr-3 text-2xl font-mono">01.</span> {t.about.heading}
       </h2>
 
       <div className="grid md:grid-cols-2 gap-12 items-center">
         {/* Left column: Text + Tech badges */}
         <RevealDiv className="space-y-6" delay={0.1}>
           <p className="text-muted-foreground leading-relaxed">
-            Meu foco principal é o desenvolvimento backend, onde me sinto confortável
-            arquitetando sistemas complexos e garantindo performance e segurança. Tenho
-            vasta experiência com o ecossistema Java e bancos de dados relacionais.
+            {t.about.paragraph1}
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            Além de escrever código, atuo como Tech Lead. Conduzo decisões de arquitetura, oriento o time nas
-            melhores práticas e garanto a qualidade técnica das entregas.
+            {t.about.paragraph2}
           </p>
 
           {/* Tech badges */}
           <div className="pt-4">
             <h3 className="text-xs uppercase tracking-wider text-muted-foreground mb-4 font-semibold">
-              Tecnologias Recentes
+              {t.about.techHeading}
             </h3>
             <div className="flex flex-wrap gap-2">
               {techBadges.map((tech) => (
@@ -80,7 +80,7 @@ export function About() {
                 <span className="text-sky-300">createImpact</span>() {"{"}
               </p>
               <p className="pl-8">
-                <span className="text-gray-500">// Writing clean code...</span>
+                <span className="text-gray-500">{t.about.codeComment}</span>
               </p>
               <p className="pl-8">
                 <span className="text-purple-400">while</span>(alive) {"{"}
